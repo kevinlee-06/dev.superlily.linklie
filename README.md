@@ -35,20 +35,12 @@ docker run -p PORT:8080 kevinlee-06/linklie
 
 ```yaml
 services:
-  app:
+  server:
     image: kevinlee-06/linklie
     ports:
-      - 8080:8080
-      - ${PORT}:8080
+      - 80:8080
     volumes:
-      - .:/usr/src/app
-    depends_on:
-      - db
-
-  db:
-    image: nouchka/sqlite3
-    volumes:
-      - db_data:/data/db
+      - ./urls.db:/usr/src/app/urls.db
 
 volumes:
   db_data:
