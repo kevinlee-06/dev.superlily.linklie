@@ -19,10 +19,39 @@ git clone https://github.com/kevinlee-06/linklie.git
 cd linklie
 ```
 
-### Use docker compose to build and run the application in the background
+### Build the Docker image
 
 ```sh
-docker compose up -d --build
+docker build -t kevinlee-06/linklie .
+```
+
+### Run the Docker container
+
+```sh
+docker run -p PORT:8080 kevinlee-06/linklie
+```
+
+### Example `docker-compose.yaml` file
+
+```yaml
+services:
+  app:
+    image: kevinlee-06/linklie
+    ports:
+      - 8080:8080
+      - ${PORT}:8080
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+
+  db:
+    image: nouchka/sqlite3
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
 ```
 
 > [!NOTE]  
