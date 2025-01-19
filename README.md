@@ -40,6 +40,7 @@ cd linklie
 ### Run the server with Node.js
 
 ```sh
+npm install
 node server.js
 ```
 
