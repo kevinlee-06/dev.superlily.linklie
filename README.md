@@ -39,8 +39,6 @@ services:
     image: kevinlee-06/linklie
     ports:
       - 80:8080
-    volumes:
-      - ./urls.db:/usr/src/app/urls.db
 
 volumes:
   db_data:
