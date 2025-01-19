@@ -10,6 +10,8 @@
 
 - A simple web interface is provided to allow users to add and delete URLs easily. The UI can be accessed at the root URL of the server.
 
+![Web UI](image.png)
+
 ## Deploying with Docker
 
 ### Clone the repository
