@@ -1,5 +1,15 @@
 # Linklie - A URL shortener
 
+## Features
+
+### Password Protection for Deletion
+
+- A password is required to delete a URL. You can set the deletion password in the web console. The password is stored as a hash in the database.
+
+### Web UI
+
+- A simple web interface is provided to allow users to add and delete URLs easily. The UI can be accessed at the root URL of the server.
+
 ## Deploying with Docker
 
 ### Clone the repository
