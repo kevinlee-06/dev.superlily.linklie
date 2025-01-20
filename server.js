@@ -6,7 +6,7 @@ const db = require('./database'); // 確保這個檔案正確設置了 SQLite �
 const { url } = require('inspector');
 const app = express();
 const PORT = 8080;
-const HOST = process.env.HOST || 'localhost';
+// const HOST = process.env.HOST || 'localhost';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -117,5 +117,6 @@ app.delete('/:id', (req, res) => {
 
 // 啟動伺服器
 app.listen(PORT, () => {
-    console.log(`Server is running on http://${HOST}:${PORT}`);
+    // console.log(`Server is running on http://${HOST}:${PORT}`);
+    console.log("Server is now running...");
 });
