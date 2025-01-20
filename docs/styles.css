@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    padding-bottom: 70px; /* Space for the footer */
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+nav ul li a:hover {
+    color: #f4f4f4; /* Change color on hover */
+}
+
+main {
+    padding: 20px;
+    background: #ffffff;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #35424a; /* Change heading color */
+}
+
+h4, h5 {
+    color: #333; /* Darker color for subheadings */
+}
+
+p {
+    font-size: 16px; /* 設定段落字體大小 */
+    line-height: 1.5; /* 行高 */
+    color: #333; /* 段落文字顏色 */
+}
+
+h5 {
+    font-size: 18px; /* 設定 h5 字體大小 */
+    line-height: 1.4; /* 行高 */
+    color: #35424a; /* h5 文字顏色 */
+    margin-top: 10px; /* 上方邊距 */
+    margin-bottom: 10px; /* 下方邊距 */
+}
+
+
+pre {
+    background: #f8f8f8; /* Light background for code blocks */
+    border: 1px solid #ddd; /* Border around code blocks */
+    padding: 10px; /* Padding inside code blocks */
+    border-radius: 5px; /* Rounded corners */
+    overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #35424a;
+    color: #ffffff;
+    position: fixed; /* Keep footer fixed at the bottom */
+    bottom: 0;
+    width: 100%;
+}
+
+blockquote {
+    border-left: 4px solid #35424a; /* Left border for blockquotes */
+    padding-left: 10px; /* Padding for blockquote text */
+    margin: 10px 0; /* Margin for blockquote */
+    color: #555; /* Color for blockquote text */
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+}
+
+.logo {
+    height: 140px;
+    display: block; /* Ensure images are block elements */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block; /* Stack navigation items on small screens */
+        margin: 5px 0; /* Margin for stacked items */
+    }
+
+    main {
+        margin: 10px; /* Reduce margin on small screens */
+    }
+}
