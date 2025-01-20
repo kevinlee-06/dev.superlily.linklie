@@ -1,0 +1,13 @@
+.black-theme {
+    --background-color: #000000;
+    --container-background: #000000;
+    --label-color: #ffffff;
+    --input-border: #ffffff;
+    --input-focus-border: #00ff73;
+    --button-background: #000000;
+    --button-hover-background: rgb(31, 31, 31);
+    --link-color: #ffffff;
+    --link-hover-color: #00ff80;
+    --button-text-color: #ffffff;
+    --text-color: #ffffff;
+  }
