@@ -18,7 +18,12 @@ docker build -t kevinlee-06/linklie .
 ### Run the Docker container
 
 ```sh
-docker run -p PORT:8080 kevinlee-06/linklie
+docker run -d \
+  --name server \
+  -p 14400:8080 \
+  -v data:/usr/src/app \
+  kevinlee-06/linklie:latest
+
 ```
 
 ### Example `docker-compose.yaml` file
@@ -30,10 +35,15 @@ services:
     ports:
       - PORT:8080
     volumes:
-      - db_data:/usr/src/app/db
-
+      - data:/usr/src/app      
 volumes:
-  db_data:
+  data:
+```
+
+#### Use the command to run the latest version of Linklie
+
+```sh
+docker compose up -d --pull always
 ```
 
 > [!NOTE]  
