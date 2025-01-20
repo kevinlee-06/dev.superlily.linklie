@@ -17,6 +17,6 @@ jobs:
 
       - name: Build and push
         run:
-          docker login ghcr.io -u kevinlee-06 -p ${{ secrets.GH_PAT }}
-          docker build -t ghcr.io/kevinlee-06/linklie:latest .
-          docker push ghcr.io/kevinlee-06/linklie:latest
+          docker login ghcr.io -u kevinlee-06 -p ${{ secrets.GH_PAT }};
+          docker build -t ghcr.io/kevinlee-06/linklie:latest .;
+          docker push ghcr.io/kevinlee-06/linklie:latest;
