@@ -38,6 +38,7 @@ services:
       - data:/usr/src/app/db    
 volumes:
   data:
+    driver: local
 ```
 
 #### Use the command to run the latest version of Linklie
