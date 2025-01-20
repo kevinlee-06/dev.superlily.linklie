@@ -6,9 +6,8 @@ const db = require('./database'); // 確保這個檔案正確設置了 SQLite �
 const { url } = require('inspector');
 const app = express();
 const PORT = 8080;
-const disallowedIds = ['public', 'admin', 'test'];
-
-// const HOST = process.env.HOST || 'localhost';
+const disallowedIds = ['public', 'admin', 'docs', 'database.js', 'server.js', 'package.json', 'package-lock.json', 'node_modules', '.git', 'README.md', 'LICENSE', 'Dockerfile', 'docker-compose.yaml', '.gitignore'];
+const disallowedSymbols = ['/', '\\', '?', '%', '*', ':', '|', '"', '<', '>', '.', '\''];
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,17 +19,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/'));
 });
 
-// 從請求的 id 參數回傳短網址
-// const generateShortUrl = (id) => {
-//     return `https://${HOST}/${id}`;
-
-// };
-
 // 接受 POST 請求的伺服器
 app.post('/shorten', (req, res) => {
     const targetUrl = req.body.url; // {"url": "https://long-url", "id": "short-id", "password": "password-for-deletion"}
     const customId = req.body.id;
-    const password = req.body.password;
+    let password = req.body.password;
 
     if (!customId) {
         return res.status(400).send('ID is required\n');
@@ -41,11 +34,18 @@ app.post('/shorten', (req, res) => {
     }
 
     if (!password) {
-        return res.status(400).send('Password is required\n');
+        // return res.status(400).send('Password is required\n');
+        password = customId;
     }
 
     if (disallowedIds.includes(customId.toLowerCase())) {
         return res.status(400).send(`The ID "${customId}" is not allowed\n`);
+    }
+
+    for (const symbol of disallowedSymbols) {
+        if (customId.includes(symbol)) {
+            return res.status(400).send(`ID cannot contain "${symbol}"`);
+        }
     }
 
     // 檢查 ID 是否已存在
@@ -67,8 +67,7 @@ app.post('/shorten', (req, res) => {
                 if (err) {
                     return res.status(500).send(err.message);
                 }
-                // const shortUrl = generateShortUrl(customId);
-                // res.json({ shortUrl: shortUrl });
+
                 res.json({url: targetUrl, id: customId, password: password});
             });
         });
@@ -90,10 +89,11 @@ app.get('/:id', (req, res) => {
 // DELETE 請求：刪除短網址
 app.delete('/:id', (req, res) => {
     const id = req.params.id;
-    const password = req.body.password;
+    let password = req.body.password;
 
     if (!password) {
-        return res.status(400).send('Password is required\n');
+        // return res.status(400).send('Password is required\n');
+        password = id;
     }
 
     db.get("SELECT password_hash FROM urls WHERE custom_id = ?", [id], (err, row) => {
@@ -122,7 +122,4 @@ app.delete('/:id', (req, res) => {
 });
 
 // 啟動伺服器
-app.listen(PORT, () => {
-    // console.log(`Server is running on http://${HOST}:${PORT}`);
-    console.log("Server is now running...");
-});
+app.listen(PORT, () => console.log("Server is now running..."));
