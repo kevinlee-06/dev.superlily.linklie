@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo.jpg" alt="Linklie Logo" align="center" width="128" height="128" style="border-radius: 15%">
+  <img src="docs/logo.png" alt="Linklie Logo" align="center" width="128" height="128">
 </p>
 
 <h1 align="center">Linklie - A URL shortener</h1>
