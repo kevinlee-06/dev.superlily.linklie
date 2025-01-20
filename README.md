@@ -2,7 +2,7 @@
 
 ## Features
 
-### Password Protection for [Deletion](DELETE-API.md)
+### Password Protection for [Deletion](docs/DELETE-API.md)
 
 - A password is required to delete a URL. You can set the deletion password in the web console.
 - The password is stored as a hash in the database.
@@ -12,7 +12,7 @@
 - A simple web interface is provided to allow users to add and delete URLs easily.
 - The UI can be accessed at the root URL of the server.
 
-![Web UI](image.png)
+![Web UI](docs/image.png)
 
 ### Custom URL
 
@@ -22,11 +22,11 @@
 
 - Linklie is free and open source and available on [GitHub](https://github.com/kevinlee-06/linklie). Contributions are welcome!
 
-### [Easy Deployment](DEPLOY.md)
+### [Easy Deployment](docs/DEPLOY.md)
 
 - Linklie can be easily deployed using Docker or Node.js. Follow the instructions below to get your server up and running in no time.
 
-### [API](API.md)
+### [API](docs/API.md)
 
 - Linklie provides a simple API for creating and deleting URLs. The API can be accessed using HTTP requests.
 

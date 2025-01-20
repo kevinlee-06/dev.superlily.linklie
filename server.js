@@ -6,6 +6,8 @@ const db = require('./database'); // 確保這個檔案正確設置了 SQLite �
 const { url } = require('inspector');
 const app = express();
 const PORT = 8080;
+const disallowedIds = ['public', 'admin', 'test'];
+
 // const HOST = process.env.HOST || 'localhost';
 
 app.use(bodyParser.json());
@@ -15,7 +17,7 @@ app.use(express.static(path.join(__dirname)));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 // 從請求的 id 參數回傳短網址
@@ -40,6 +42,10 @@ app.post('/shorten', (req, res) => {
 
     if (!password) {
         return res.status(400).send('Password is required\n');
+    }
+
+    if (disallowedIds.includes(customId.toLowerCase())) {
+        return res.status(400).send(`The ID "${customId}" is not allowed\n`);
     }
 
     // 檢查 ID 是否已存在
