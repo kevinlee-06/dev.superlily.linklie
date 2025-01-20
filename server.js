@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname)));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/index.html'));
+    res.sendFile(path.join(__dirname, '/public/'));
 });
 
 // 從請求的 id 參數回傳短網址
