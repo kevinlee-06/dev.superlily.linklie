@@ -1,0 +1,26 @@
+name: Docker Image CI for Unstable Branch
+
+on:
+  push:
+    branches:
+      - unstable
+  pull_request:
+    branches:
+      - unstable
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build and push
+        run: |
+          export TZ="Asia/Taipei"
+          VERSION=$(date +'%Y-%m-%d.%H.%M.%S')
+          docker login ghcr.io -u kevinlee-06 -p ${{secrets.GH_PAT}};
+          docker build -t ghcr.io/kevinlee-06/linklie:${VERSION} .
+          docker tag ghcr.io/kevinlee-06/linklie:${VERSION} ghcr.io/kevinlee-06/linklie:unstable
+          docker push ghcr.io/kevinlee-06/linklie:${VERSION}
+          docker push ghcr.io/kevinlee-06/linklie:unstable
