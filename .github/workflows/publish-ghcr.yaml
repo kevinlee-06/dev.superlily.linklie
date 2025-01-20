@@ -1,0 +1,22 @@
+name: Docker Image CI for GHCR
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build and push
+        run:
+          docker login ghcr.io -u kevinlee-06 -p ${{ secrets.GH_PAT }}
+          docker build -t ghcr.io/kevinlee-06/linklie:latest .
+          docker push ghcr.io/kevinlee-06/linklie:latest
