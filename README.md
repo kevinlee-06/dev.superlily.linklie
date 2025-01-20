@@ -22,11 +22,11 @@
 
 - Linklie is free and open source and available on [GitHub](https://github.com/kevinlee-06/linklie). Contributions are welcome!
 
-### Easy Deployment
+### [Easy Deployment](DEPLOY.md)
 
 - Linklie can be easily deployed using Docker or Node.js. Follow the instructions below to get your server up and running in no time.
 
-### API
+### [API](API.md)
 
 - Linklie provides a simple API for creating and deleting URLs. The API can be accessed using HTTP requests.
 
@@ -36,55 +36,3 @@
 
 - The server does not store any visitor logs, ensuring user privacy and data protection.
 
-## Deploying with Docker
-
-### Clone the repository
-
-```sh
-git clone https://github.com/kevinlee-06/linklie.git
-cd linklie
-```
-
-### Build the Docker image
-
-```sh
-docker build -t kevinlee-06/linklie .
-```
-
-### Run the Docker container
-
-```sh
-docker run -p PORT:8080 kevinlee-06/linklie
-```
-
-### Example `docker-compose.yaml` file
-
-```yaml
-services:
-  server:
-    image: kevinlee-06/linklie
-    ports:
-      - 80:8080
-```
-
-> [!NOTE]  
-> Don't forget to change the port in the `docker-compose.yaml` file.
-
-## Deploying with Node.js
-
-### Clone the repository
-
-```sh
-git clone https://github.com/kevinlee-06/linklie.git
-cd linklie
-```
-
-### Run the server with Node.js
-
-```sh
-npm install
-node server.js
-```
-
-> [!NOTE]  
-> Don't forget to change the `PORT` in the `server.js` file.
