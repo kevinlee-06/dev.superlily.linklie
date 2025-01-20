@@ -1,0 +1,13 @@
+.orange-theme {
+    --background-color: #fff3e0;
+    --container-background: #ffffff;
+    --label-color: #ff9800;
+    --input-border: #ff9800;
+    --input-focus-border: #ffb74d;
+    --button-background: #ff9800;
+    --button-hover-background: #f57c00;
+    --link-color: #ff9800;
+    --link-hover-color: #f57c00;
+    --button-text-color: #ffffff;
+    --text-color: #000000;
+  }
