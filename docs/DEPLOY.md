@@ -21,7 +21,7 @@ docker build -t kevinlee-06/linklie .
 docker run -d \
   --name server \
   -p 14400:8080 \
-  -v data:/usr/src/app \
+  -v data:/usr/src/app/db \
   kevinlee-06/linklie:latest
 
 ```
@@ -35,7 +35,7 @@ services:
     ports:
       - PORT:8080
     volumes:
-      - data:/usr/src/app      
+      - data:/usr/src/app/db    
 volumes:
   data:
 ```
