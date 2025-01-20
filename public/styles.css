@@ -1,78 +1,139 @@
-/* https://github.com/kevinlee-06/shareable-text/blob/main/styles.css */
+:root, .orange-theme {
+  --background-color: #fff3e0;
+  --container-background: #ffffff;
+  --label-color: #ff9800;
+  --input-border: #ff9800;
+  --input-focus-border: #ffb74d;
+  --button-background: #ff9800;
+  --button-hover-background: #f57c00;
+  --link-color: #ff9800;
+  --link-hover-color: #f57c00;
+  --button-text-color: #ffffff;
+  --text-color: #000000;
+}
+
+
+.green-theme {
+  --background-color: #e8f5e9;
+  --container-background: #ffffff;
+  --label-color: #4caf50;
+  --input-border: #4caf50;
+  --input-focus-border: #81c784;
+  --button-background: #4caf50;
+  --button-hover-background: #388e3c;
+  --link-color: #4caf50;
+  --link-hover-color: #388e3c;
+  --button-text-color: #ffffff;
+  --text-color: #000000;
+}
+
+.blue-theme {
+  --background-color: #e3f2fd;
+  --container-background: #ffffff;
+  --label-color: #2196f3;
+  --input-border: #2196f3;
+  --input-focus-border: #90caf9;
+  --button-background: #2196f3;
+  --button-hover-background: #1976d2;
+  --link-color: #2196f3;
+  --link-hover-color: #1976d2;
+  --button-text-color: #ffffff;
+  --text-color: #000000;
+}
+
+.dark-blue-theme {
+  --background-color: #0d1b2a; /* Dark background */
+  --container-background: #303234; /* Darker container */
+  --label-color: #b7d6fc; /* Dark blue label */
+  --input-border: #7c98bb; /* Dark blue input border */
+  --input-focus-border: #ffffff; /* Lighter dark blue on focus */
+  --button-background: #3d6ea9; /* Dark blue button */
+  --button-hover-background: rgb(30, 74, 128); /* Darker blue on hover */
+  --link-color: #b5d6ff; /* Dark blue link */
+  --link-hover-color: #619ce5; /* Darker blue on hover */
+  --button-text-color: #ffffff; /* White text */
+  --text-color: #ffffff;
+}
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fce4ec; /* Light pink background */
-    margin: 0;
-    flex-direction: column;
-    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
-    padding: 20px;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    width: 90%;
-    max-width: 400px;
-    margin-bottom: 20px;
-  } 
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold; 
-    color: #d81b60; /* Pink color for labels */
-  }
-  
-  .input-group {
-    margin-bottom: 15px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px; 
-    box-sizing: border-box;
-    border: 1px solid #f48fb1; /* Light pink border */
-    border-radius: 5px;
-    transition: border-color 0.3s;
-  }
-  
-  input:focus {
-    border-color: #d81b60; /* Darker pink on focus */
-    outline: none;
-  }
-  
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #d81b60; /* Pink button background */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s; 
-  }
-  
-  button:hover {
-    background-color: #c2185b; /* Darker pink on hover */
-  }
-  
-  a {
-    display: inline-block;
-    margin-top: 20px; /* Space above the link */
-    text-decoration: none; /* Remove underline */
-    color: #d81b60; /* Pink color for the link */
-    font-weight: bold; /* Bold text */
-    transition: color 0.3s; /* Smooth color transition */
-  }
-  
-  a:hover {
-    color: #c2185b; /* Darker pink on hover */
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+  margin: 0;
+  flex-direction: column;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--container-background);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; 
+  color: var(--label-color);
+  cursor: pointer;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 10px; 
+  box-sizing: border-box;
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  transition: border-color 0.3s;
+  background-color: var(--container-background);
+}
+
+input:focus {
+  border-color: var(--input-focus-border);
+  outline: none;
+}
+
+button, select {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: var(--button-text-color);
+  background-color: var(--button-background);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s; 
+}
+
+button:hover, select:hover {
+  background-color: var(--button-hover-background);
+}
+
+a {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: var(--link-color);
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+h2, #responseMessage, input {
+  color: var(--text-color)
+}

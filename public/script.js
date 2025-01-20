@@ -34,7 +34,6 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
     });
 });
 
-
 document.getElementById('deleteForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -64,4 +63,8 @@ document.getElementById('deleteForm').addEventListener('submit', function(event)
     .catch(error => {
         document.getElementById('responseMessage').textContent = 'Error: ' + error.message;
     });
+});
+
+document.getElementById('theme').addEventListener('change', function() {
+    document.body.className = this.value;
 });
