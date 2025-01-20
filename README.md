@@ -2,7 +2,7 @@
 
 ## Features
 
-### Password Protection for Deletion
+### Password Protection for [Deletion](DELETE-API.md)
 
 - A password is required to delete a URL. You can set the deletion password in the web console.
 - The password is stored as a hash in the database.
