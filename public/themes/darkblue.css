@@ -1,0 +1,13 @@
+.dark-blue-theme {
+    --background-color: #0d1b2a;
+    --container-background: #303234;
+    --label-color: #b7d6fc;
+    --input-border: #7c98bb;
+    --input-focus-border: #ffffff;
+    --button-background: #3d6ea9;
+    --button-hover-background: rgb(30, 74, 128);
+    --link-color: #b5d6ff;
+    --link-hover-color: #619ce5;
+    --button-text-color: #ffffff;
+    --text-color: #ffffff;
+  }

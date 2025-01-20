@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
+    <title>Linklie - URL Shortener</title>
     <link rel="stylesheet" href="/public/styles.css">
     <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body class="orange-theme">
     <h1><a href="https://github.com/kevinlee-06/linklie">Linklie - A URL Shortener</a></h1>
+
     <div class="container">
         <h2>Create Short URL</h2>
         <form id="postForm">
@@ -37,6 +38,7 @@
             <button type="submit">Delete Short URL</button>
         </form>
     </div>
+
     <div class="container">
         <h2 id="response-h2" title="A json will be returned if success.">Response:
             <label style="display: inline-block; font-size: 0.5em;" for="response-h2" title="A json will be returned if success.">[tips]</label>
@@ -50,11 +52,15 @@
             <option value="orange-theme">Orange</option>
             <option value="green-theme">Green</option>
             <option value="blue-theme">Blue</option>
+            <option value="pink-theme">Pink</option>
             <option value="dark-blue-theme">Dark</option>
+            <option value="black-theme">Black</option>
         </select>
         
     </div>
     
-    <script src="/public/script.js"></script>
+    <script src="/public/scripts/delete.js"></script>
+    <script src="/public/scripts/post.js"></script>
+    <script src="/public/scripts/styles.js"></script>
 </body>
 </html>

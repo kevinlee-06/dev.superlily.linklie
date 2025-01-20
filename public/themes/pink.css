@@ -1,0 +1,13 @@
+.pink-theme {
+    --background-color: #fce4ec; /* Light pink background */
+    --container-background: #ffffff; /* White container */
+    --label-color: #d81b60; /* Pink label color */
+    --input-border: #d81b60; /* Pink input border */
+    --input-focus-border: #f48fb1; /* Light pink focus border */
+    --button-background: #d81b60; /* Pink button background */
+    --button-hover-background: #c2185b; /* Darker pink on hover */
+    --link-color: #d81b60; /* Pink link color */
+    --link-hover-color: #c2185b; /* Darker pink on hover */
+    --button-text-color: #ffffff; /* White text on buttons */
+    --text-color: #000000; /* Black text */
+}
