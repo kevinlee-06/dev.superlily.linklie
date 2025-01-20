@@ -26,9 +26,14 @@ docker run -p PORT:8080 kevinlee-06/linklie
 ```yaml
 services:
   server:
-    image: kevinlee-06/linklie
+    image: ghcr.io/kevinlee-06/linklie:latest
     ports:
-      - 80:8080
+      - PORT:8080
+    volumes:
+      - db_data:/usr/src/app/db
+
+volumes:
+  db_data:
 ```
 
 > [!NOTE]  

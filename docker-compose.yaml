@@ -1,7 +1,0 @@
-services:
-  server:
-    image: kevinlee-06/linklie
-    ports:
-      - 80:8080
-
-  # run `docker build -t kevinlee-06/linklie .` to build the image first
