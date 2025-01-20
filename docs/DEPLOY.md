@@ -23,7 +23,6 @@ docker run -d \
   -p 14400:8080 \
   -v data:/usr/src/app/db \
   kevinlee-06/linklie:latest
-
 ```
 
 ### Example `docker-compose.yaml` file
