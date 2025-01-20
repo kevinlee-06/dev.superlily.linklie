@@ -47,7 +47,6 @@
 ### [API](docs/API.md)
 
 - Linklie provides a simple API for creating and deleting URLs. The API can be accessed using HTTP requests.
-
 - User can create their own web dashboard using the API.
 
 ### No log policy
