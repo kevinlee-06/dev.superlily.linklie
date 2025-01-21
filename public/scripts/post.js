@@ -28,14 +28,14 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
         return response.json();
     })
     .then(data => {
-        document.getElementById('responseMessage').textContent = JSON.stringify(data, null, 2);
+        document.getElementById('responseMessage').value = JSON.stringify(data, null, 2);
         const host = window.location.host;
         const protocol = window.location.protocol;
         document.getElementById('shortenedUrl').value = `${protocol}//${host}/${data.id}`;
         document.getElementById('response-h2').scrollIntoView({ behavior: 'smooth' });
     })
     .catch(error => {
-        document.getElementById('responseMessage').textContent = 'Error: ' + error.message;
+        document.getElementById('responseMessage').value = 'Error: ' + error.message;
         document.getElementById('response-h2').scrollIntoView({ behavior: 'smooth' });
     });
 });

@@ -46,15 +46,18 @@
 
     <div class="container">
         <h2 id="response-h2" title="A json will be returned if success." data-i18n="response-title">
-            Response:
+            Response
             <label style="display: inline-block; font-size: 0.5em;" for="response-h2" title="A json will be returned if success." data-i18n="response-tips">
                 [tips]
             </label>
         </h2>
-        <pre id="responseMessage"></pre>
+        <div>
+            <label for="responseMessage" data-i18n="response-message">Response</label>
+            <textarea type="text" id="responseMessage"  rows="5" readonly></textarea><br><br>
+        </div>
         <div>
             <label for="shortenedUrl" data-i18n="shortened-url">Shortened URL:</label>
-            <input type="text" id="shortenedUrl" readonly onclick="copyText()"><br><br>
+            <input type="text" id="shortenedUrl" onclick="copyText();" readonly><br><br>
             
             <button onclick="copyText()">Copy</button>
 
@@ -89,6 +92,10 @@
     <script src="/public/scripts/post.js"></script>
     <script src="/public/scripts/styles.js"></script>
     <script src="/public/scripts/i18n.js"></script>
-    <script>translatePage('zh-TW');</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            translatePage('zh-TW');
+        });
+    </script>
 </body>
 </html>

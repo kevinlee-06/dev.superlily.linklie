@@ -40,7 +40,7 @@ label {
   margin-bottom: 15px;
 }
 
-input {
+input, textarea {
   width: 100%;
   padding: 10px; 
   box-sizing: border-box;
@@ -48,6 +48,7 @@ input {
   border-radius: 5px;
   transition: border-color 0.3s;
   background-color: var(--container-background);
+  resize: none;
 }
 
 input:focus {
@@ -90,8 +91,4 @@ h2, #responseMessage, input {
 
 .language-selector, .theme-selector {
   margin-bottom: 20px;
-}
-
-input[readonly] {
-  cursor: copy;
 }

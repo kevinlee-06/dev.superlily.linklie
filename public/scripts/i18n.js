@@ -23,6 +23,7 @@ const translations = {
         "theme-tailwind": "Tailwind",
         "language-label": "語言：",
         "shortened-url": "Shortened URL:",
+        "responseMessage": "Response Message",
     },
     "zh-TW": {
         "title": "Linklie - 短網址",
@@ -36,7 +37,7 @@ const translations = {
         "delete-id-label": "識別碼：",
         "delete-password-label": "密碼：",
         "delete-button": "刪除短網址",
-        "response-title": "回應：",
+        "response-title": "回應",
         "response-tips": "[提示]",
         "theme-label": "選擇主題：",
         "theme-orange": "橙色",
@@ -48,26 +49,31 @@ const translations = {
         "theme-tailwind": "Tailwind",
         "language-label": "Language:",
         "shortened-url": "短網址：",
+        "responseMessage": "回應訊息",
     }
 };
 
-const languageSelector = document.getElementById('language');
-const elementsToTranslate = document.querySelectorAll('[data-i18n]');
+document.addEventListener('DOMContentLoaded', () => {
+    const languageSelector = document.getElementById('language');
+    const elementsToTranslate = document.querySelectorAll('[data-i18n]');
 
-function translatePage(lang) {
-    elementsToTranslate.forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-            if (el.tagName === 'TITLE') {
-                document.title = translations[lang][key];
-            } else {
-                el.textContent = translations[lang][key];
+    // Define the translatePage function in the global scope
+    window.translatePage = function(lang) {
+        elementsToTranslate.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                if (el.tagName === 'TITLE') {
+                    document.title = translations[lang][key];
+                } else {
+                    el.textContent = translations[lang][key];
+                }
             }
-        }
-    });
-}
+        });
+    };
 
-languageSelector.addEventListener('change', (event) => {
-    const selectedLanguage = event.target.value;
-    translatePage(selectedLanguage);
+    // Add event listener for language selection
+    languageSelector.addEventListener('change', (event) => {
+        const selectedLanguage = event.target.value;
+        translatePage(selectedLanguage); // Call the function here
+    });
 });
