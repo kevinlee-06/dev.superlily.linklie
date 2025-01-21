@@ -87,3 +87,7 @@ a:hover {
 h2, #responseMessage, input {
   color: var(--text-color)
 }
+
+.language-selector, .theme-selector {
+  margin-bottom: 20px;
+}
