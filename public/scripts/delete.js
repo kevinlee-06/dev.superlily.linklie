@@ -8,6 +8,8 @@ document.getElementById('deleteForm').addEventListener('submit', function(event)
         password: deletePassword
     };
 
+    document.getElementById('shortenedUrl').value = "";
+
     fetch(`/${deleteId}`, {
         method: 'DELETE',
         headers: {
@@ -23,8 +25,10 @@ document.getElementById('deleteForm').addEventListener('submit', function(event)
     })
     .then(message => {
         document.getElementById('responseMessage').textContent = message;
+        document.getElementById('response-h2').scrollIntoView({ behavior: 'smooth' });
     })
     .catch(error => {
         document.getElementById('responseMessage').textContent = 'Error: ' + error.message;
+        document.getElementById('response-h2').scrollIntoView({ behavior: 'smooth' });
     });
 });

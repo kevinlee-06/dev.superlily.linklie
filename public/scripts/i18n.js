@@ -22,6 +22,7 @@ const translations = {
         "theme-black": "Black",
         "theme-tailwind": "Tailwind",
         "language-label": "語言：",
+        "shortened-url": "Shortened URL:",
     },
     "zh-TW": {
         "title": "Linklie - 短網址",
@@ -46,6 +47,7 @@ const translations = {
         "theme-black": "黑色",
         "theme-tailwind": "Tailwind",
         "language-label": "Language:",
+        "shortened-url": "短網址：",
     }
 };
 

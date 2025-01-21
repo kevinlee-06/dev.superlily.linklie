@@ -52,6 +52,14 @@
             </label>
         </h2>
         <pre id="responseMessage"></pre>
+        <div>
+            <label for="shortenedUrl" data-i18n="shortened-url">Shortened URL:</label>
+            <input type="text" id="shortenedUrl" readonly onclick="copyText()"><br><br>
+            
+            <button onclick="copyText()">Copy</button>
+
+            <p id="copyMessage" style="display: none; color: rgb(255, 56, 56);">Text copied!</p>
+        </div>
     </div>
     <div class="container">
 
@@ -76,7 +84,7 @@
         </select>
     </div>
 </div>
-
+    <script src="/public/scripts/copy.js"></script>
     <script src="/public/scripts/delete.js"></script>
     <script src="/public/scripts/post.js"></script>
     <script src="/public/scripts/styles.js"></script>

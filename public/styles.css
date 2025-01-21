@@ -91,3 +91,7 @@ h2, #responseMessage, input {
 .language-selector, .theme-selector {
   margin-bottom: 20px;
 }
+
+input[readonly] {
+  cursor: copy;
+}
