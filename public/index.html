@@ -14,13 +14,13 @@
         <h2>Create Short URL</h2>
         <form id="postForm">
             <label for="url" title="The address to be redirected to.">URL:</label>
-            <input type="text" id="url" name="url" required><br><br>
+            <input type="text" id="url" name="url" required autocomplete="off"><br><br>
             
             <label for="id" title="The short link will be 'https://host/short-id'">Short ID:</label>
-            <input type="text" id="id" name="id" required><br><br>
+            <input type="text" id="id" name="id" required autocomplete="off"><br><br>
             
             <label for="password" title="Password is used for short link deletion.">Password:</label>
-            <input type="password" id="password" name="password"><br><br>
+            <input type="text" id="password" name="password" autocomplete="off"><br><br>
             
             <button type="submit">Create Short URL</button>
         </form>
@@ -30,7 +30,7 @@
         <h2>Delete Short URL</h2>
         <form id="deleteForm">
             <label for="deleteId">Short ID:</label>
-            <input type="text" id="deleteId" name="deleteId" required><br><br>
+            <input type="text" id="deleteId" name="deleteId" required autocomplete="off"><br><br>
             
             <label for="deletePassword" title="Enter password to delete short link.">Password:</label>
             <input type="password" id="deletePassword" name="deletePassword"><br><br>
