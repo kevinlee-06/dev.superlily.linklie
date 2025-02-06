@@ -1,13 +1,28 @@
 function copyText() {
-    var copyText = document.getElementById("shortenedUrl");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999);
+    const textToCopy = document.getElementById("shortenedUrl");
+    navigator.clipboard
+    .writeText(textToCopy)
+    .then(() => {
+        displayCopyMessage();
+    })
+    .catch((err) => {
+        console.error("Failed to copy text: ", err);
+        legacyCopyTextApi();
+    });
+}
+
+function legacyCopyTextApi() {
+    const textToCopy = document.getElementById("shortenedUrl");
+    textToCopy.select();
+    textToCopy.setSelectionRange(0, 99999);
     document.execCommand("copy");
-    // alert("已複製訊息: " + copyText.value);
+    displayCopyMessage();
+}
+
+function displayCopyMessage() {
     const message = document.getElementById("copyMessage");
     message.style.display = "block";
 
-    // Hide the message after 1.5 seconds
     setTimeout(() => {
         message.style.display = "none";
     }, 1500);
