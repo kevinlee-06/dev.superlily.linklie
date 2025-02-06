@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>API - Linklie 短網址伺服器</title>
+    <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>Linklie 短網址伺服器</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="features.html">特色</a></li>
+                <li><a href="deploying.html">部屬</a></li>
+                <li><a href="https://github.com/kevinlee-06/Linklie">GitHub</a></li>
+                <li><a href="api.html">API</a></li>
+                <li><a href="https://github.com/kevinlee-06/Linklie/blob/main/docs/DELETE-API.md">刪除 API</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>概述</h2>
+    <p>此 API 允許用戶使用自定義 ID 和密碼來縮短 URL，以便將來刪除。API 端點接受 POST 請求以在數據庫中創建縮短的 URL 條目。</p>
+
+    <h2>端點</h2>
+
+    <h3>POST `/shorten`</h3>
+    <p>此端點用於縮短給定的 URL。</p>
+
+    <h4>請求主體</h4>
+    <p>請求主體必須是包含以下字段的 JSON 對象：</p>
+    <ul>
+        <li><strong>url</strong> (字符串，必填)：您想要縮短的長 URL。</li>
+        <li><strong>id</strong> (字符串，必填)：縮短 URL 的自定義 ID。此 ID 必須是唯一的。</li>
+        <li><strong>password</strong> (字符串，非必填)：將用於稍後刪除縮短 URL 的密碼。</li>
+    </ul>
+
+    <h4>範例請求</h4>
+    <pre><code>{
+    "url": "https://long-url.com",
+    "id": "short-id",
+    "password": "password-for-deletion"
+}</code></pre>
+
+    <h4>回應</h4>
+    <p>回應將是一個 JSON，包含原始 URL、自定義 ID 和用於刪除的密碼。</p>
+
+    <h5>成功 (HTTP 200)</h5>
+    <pre><code>{
+    "url": "https://long-url.com",
+    "id": "short-id",
+    "password": "password-for-deletion"
+}</code></pre>
+
+    <blockquote>
+        <p><strong>注意：</strong></p>
+        <ul>
+            <li>自定義 ID 必須是唯一的；如果 ID 已經存在於資料庫中，請求將以 400 狀態碼回傳失敗。</li>
+            <li>密碼在存儲到數據庫之前會被哈希處理以確保安全。</li>
+            <li>確保請求主體正確格式化為 JSON。</li>
+        </ul>
+    </blockquote>
+
+    <h5>錯誤回應：</h5>
+    <ol>
+        <strong>HTTP 400</strong>
+    </ol>
+
+    <h2>範例用法</h2>
+    <p>要縮短 URL，您可以使用像 <code>curl</code> 這樣的工具：</p>
+    <pre><code>curl -X POST https://LINKLIE_SERVER/shorten \
+        -H "Content-Type: application/json" \
+        -d '{
+            "url": "https://long-url.com",
+            "id": "short-id",
+            "password": "password-for-deletion"
+        }'
+</code></pre>
+<p>如果成功，這將回傳縮短的 URL 詳情，或者如果請求有問題，則回傳錯誤消息。</p>
+
+<blockquote>
+    <p><strong>注意：</strong></p>
+    <p>不要忘記將 <code>LINKLIE_SERVER</code> 替換為您的 Linklie 伺服器的實際 URL。</p>
+</blockquote>
+    </main>
+    <footer>
+        <p>&copy; 2025 kevinlee-06@github.com</p>
+    </footer>
+</body>
+</html>

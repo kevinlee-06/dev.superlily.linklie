@@ -87,7 +87,7 @@ app.get('/:id', (req, res) => {
 
     db.get("SELECT target_url FROM urls WHERE custom_id = ?", [id], (err, row) => {
         if (err || !row) {
-            return res.status(404).send('Not found');
+            return res.status(404).sendFile(path.join(__dirname, "/public/status", "404.html"));
         }
         res.redirect(row.target_url);
     });

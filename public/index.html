@@ -3,64 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linklie - URL Shortener</title>
+    <title data-i18n="title">Linklie - URL Shortener</title>
     <link rel="stylesheet" href="/public/styles.css">
     <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
 </head>
 <body class="orange-theme">
-    <h1><a href="https://github.com/kevinlee-06/linklie">Linklie - A URL Shortener</a></h1>
+    
+    <h1>
+        <a href="https://github.com/kevinlee-06/linklie" data-i18n="main-title">
+            Linklie - A URL Shortener
+        </a>
+    </h1>
 
     <div class="container">
-        <h2>Create Short URL</h2>
+        <h2 data-i18n="create-title">Create Short URL</h2>
         <form id="postForm">
-            <label for="url" title="The address to be redirected to.">URL:</label>
-            <input type="text" id="url" name="url" required><br><br>
+            <label for="url" title="The address to be redirected to." data-i18n="url-label">URL:</label>
+            <input type="text" id="url" name="url" required autocomplete="off"><br><br>
             
-            <label for="id" title="The short link will be 'https://host/short-id'">Short ID:</label>
-            <input type="text" id="id" name="id" required><br><br>
+            <label for="id" title="The short link will be 'https://host/short-id'" data-i18n="short-id-label">Short ID:</label>
+            <input type="text" id="id" name="id" required autocomplete="off"><br><br>
             
-            <label for="password" title="Password is used for short link deletion.">Password:</label>
-            <input type="password" id="password" name="password"><br><br>
+            <label for="password" title="Password is used for short link deletion." data-i18n="password-label">Password:</label>
+            <input type="text" id="password" name="password" autocomplete="off"><br><br>
             
-            <button type="submit">Create Short URL</button>
+            <button type="submit" data-i18n="create-button">Create Short URL</button>
         </form>
     </div>
 
     <div class="container">
-        <h2>Delete Short URL</h2>
+        <h2 data-i18n="delete-title">Delete Short URL</h2>
         <form id="deleteForm">
-            <label for="deleteId">Short ID:</label>
-            <input type="text" id="deleteId" name="deleteId" required><br><br>
+            <label for="deleteId" data-i18n="delete-id-label">Short ID:</label>
+            <input type="text" id="deleteId" name="deleteId" required autocomplete="off"><br><br>
             
-            <label for="deletePassword" title="Enter password to delete short link.">Password:</label>
+            <label for="deletePassword" title="Enter password to delete short link." data-i18n="delete-password-label">Password:</label>
             <input type="password" id="deletePassword" name="deletePassword"><br><br>
             
-            <button type="submit">Delete Short URL</button>
+            <button type="submit" data-i18n="delete-button">Delete Short URL</button>
         </form>
     </div>
 
     <div class="container">
-        <h2 id="response-h2" title="A json will be returned if success.">Response:
-            <label style="display: inline-block; font-size: 0.5em;" for="response-h2" title="A json will be returned if success.">[tips]</label>
+        <h2 id="response-h2" title="A json will be returned if success." data-i18n="response-title">
+            Response
+            <label style="display: inline-block; font-size: 0.5em;" for="response-h2" title="A json will be returned if success." data-i18n="response-tips">
+                [tips]
+            </label>
         </h2>
-        <pre id="responseMessage"></pre>
-    </div>
+        <div>
+            <label for="responseMessage" data-i18n="response-message">Response</label>
+            <textarea type="text" id="responseMessage"  rows="5" readonly></textarea><br><br>
+        </div>
+        <div>
+            <label for="shortenedUrl" data-i18n="shortened-url">Shortened URL:</label>
+            <input type="text" id="shortenedUrl" onclick="copyText();" readonly><br><br>
+            
+            <button onclick="copyText()">Copy</button>
 
-    <div class="theme-selector">
-        <label for="theme">Choose a theme:</label>
-        <select id="theme">
-            <option value="orange-theme">Orange</option>
-            <option value="green-theme">Green</option>
-            <option value="blue-theme">Blue</option>
-            <option value="pink-theme">Pink</option>
-            <option value="dark-blue-theme">Dark</option>
-            <option value="black-theme">Black</option>
-        </select>
-        
+            <p id="copyMessage" style="display: none; color: rgb(255, 56, 56);">Text copied!</p>
+        </div>
     </div>
-    
+    <div class="container">
+
+        <div class="theme-selector">
+            <label for="theme" data-i18n="theme-label">Choose a theme:</label>
+            <select id="theme">
+                <option value="orange-theme" data-i18n="theme-orange">Orange</option>
+                <option value="green-theme" data-i18n="theme-green">Green</option>
+                <option value="blue-theme" data-i18n="theme-blue">Blue</option>
+                <option value="pink-theme" data-i18n="theme-pink">Pink</option>
+                <option value="dark-blue-theme" data-i18n="theme-dark">Dark</option>
+                <option value="black-theme" data-i18n="theme-black">Black</option>
+                <option value="tailwind" data-i18n="theme-tailwind">Tailwind</option>
+            </select>
+        </div>
+        
+        <div class="language-selector">
+            <label for="language" data-i18n="language-label">Language:</label>
+            <select id="language">
+                <option value="zh-TW">中文(繁體)</option>
+                <option value="en">English</option>
+        </select>
+    </div>
+</div>
+    <script src="/public/scripts/copy.js"></script>
     <script src="/public/scripts/delete.js"></script>
     <script src="/public/scripts/post.js"></script>
     <script src="/public/scripts/styles.js"></script>
+    <script src="/public/scripts/i18n.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            translatePage('zh-TW');
+        });
+    </script>
 </body>
 </html>

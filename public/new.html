@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linklie - URL Shortener</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
+</head>
+<body class="bg-orange-100">
+    <h1 class="text-center text-3xl font-bold my-4">
+        <a href="https://github.com/kevinlee-06/linklie" class="text-blue-600 hover:underline">Linklie - A URL Shortener</a>
+    </h1>
+
+    <div class="container mx-auto p-4">
+        <h2 class="text-2xl font-semibold mb-2">Create Short URL</h2>
+        <form id="postForm" class="bg-white p-4 rounded shadow-md">
+            <label for="url" class="block mb-1" title="The address to be redirected to.">URL:</label>
+            <input type="text" id="url" name="url" required class="border border-gray-300 p-2 w-full mb-4 rounded"><br>
+            
+            <label for="id" class="block mb-1" title="The short link will be 'https://host/short-id'">Short ID:</label>
+            <input type="text" id="id" name="id" required class="border border-gray-300 p-2 w-full mb-4 rounded"><br>
+            
+            <label for="password" class="block mb-1" title="Password is used for short link deletion.">Password:</label>
+            <input type="password" id="password" name="password" class="border border-gray-300 p-2 w-full mb-4 rounded"><br>
+            
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Create Short URL</button>
+        </form>
+    </div>
+
+    <div class="container mx-auto p-4">
+        <h2 class="text-2xl font-semibold mb-2">Delete Short URL</h2>
+        <form id="deleteForm" class="bg-white p-4 rounded shadow-md">
+            <label for="deleteId" class="block mb-1">Short ID:</label>
+            <input type="text" id="deleteId" name="deleteId" required class="border border-gray-300 p-2 w-full mb-4 rounded"><br>
+            
+            <label for="deletePassword" class="block mb-1" title="Enter password to delete short link.">Password:</label>
+            <input type="password" id="deletePassword" name="deletePassword" class="border border-gray-300 p-2 w-full mb-4 rounded"><br>
+            
+            <button type="submit" class="bg-red-500 text-white p-2 rounded hover:bg-red-600">Delete Short URL</button>
+        </form>
+    </div>
+
+    <div class="container mx-auto p-4">
+        <h2 id="response-h2" class="text-2xl font-semibold mb-2" title="A json will be returned if success.">Response:
+            <label style="display: inline-block; font-size: 0.5em;" for="response-h2" title="A json will be returned if success.">[tips]</label>
+        </h2>
+        <pre id="responseMessage" class="bg-gray-100 p-4 rounded border border-gray-300"></pre>
+    </div>
+    <footer class="bg-gray-800 text-white text-center p-4 mt-4">
+        <p>
+            &copy; 2025 Linklie. 
+            <a href="https://github.com/kevinlee-06/linklie" class="text-blue-400 hover:underline">Visit my GitHub</a>
+        </p>
+    </footer>
+    <script src="/public/scripts/delete.js"></script>
+    <script src="/public/scripts/post.js"></script>
+</body>
+</html>

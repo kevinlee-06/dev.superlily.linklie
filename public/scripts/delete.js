@@ -8,6 +8,8 @@ document.getElementById('deleteForm').addEventListener('submit', function(event)
         password: deletePassword
     };
 
+    document.getElementById('shortenedUrl').value = "";
+
     fetch(`/${deleteId}`, {
         method: 'DELETE',
         headers: {
@@ -17,14 +19,16 @@ document.getElementById('deleteForm').addEventListener('submit', function(event)
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.statusText);
+            throw new Error(response.statusText);
         }
         return response.text();
     })
     .then(message => {
-        document.getElementById('responseMessage').textContent = message;
+        document.getElementById('responseMessage').value = message;
+        document.getElementById('response-h2').scrollIntoView({ behavior: 'smooth' });
     })
     .catch(error => {
-        document.getElementById('responseMessage').textContent = 'Error: ' + error.message;
+        document.getElementById('responseMessage').value = 'Error: ' + error.message;
+        document.getElementById('response-h2').scrollIntoView({ behavior: 'smooth' });
     });
 });
