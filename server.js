@@ -10,13 +10,22 @@ const disallowedIds = ['public', 'admin', 'docs', 'database.js', 'server.js', 'p
 const disallowedSymbols = ['/', '\\', '?', '%', '*', ':', '|', '"', '<', '>', '.', '\''];
 
 app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname)));
 
-
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/'));
+    const requestedUrl = req.query.u;
+
+    if (!requestedUrl) {
+        res.sendFile(path.join(__dirname, '/public/'));
+    }
+
+    else {
+        res.redirect(formatUrl(requestedUrl));
+    }
+
 });
 
 // 接受 POST 請求的伺服器
@@ -53,6 +62,7 @@ app.post('/shorten', (req, res) => {
         if (err) {
             return res.status(500).send(err.message);
         }
+
         if (row) {
             return res.status(400).send('ID already exists');
         }
@@ -63,12 +73,12 @@ app.post('/shorten', (req, res) => {
                 return res.status(500).send(err.message);
             }
 
-            db.run("INSERT INTO urls (target_url, custom_id, password_hash) VALUES (?, ?, ?)", [targetUrl, customId, hash], function(err) {
+            db.run("INSERT INTO urls (target_url, custom_id, password_hash) VALUES (?, ?, ?)", [formatUrl(targetUrl), customId, hash], function(err) {
                 if (err) {
                     return res.status(500).send(err.message);
                 }
 
-                res.json({url: targetUrl, id: customId, password: password});
+                res.json({url: formatUrl(targetUrl), id: customId, password: password});
             });
         });
     });
@@ -82,6 +92,7 @@ app.get('/:id', (req, res) => {
         if (err || !row) {
             return res.status(404).sendFile(path.join(__dirname, "/public/status", "404.html"));
         }
+
         res.redirect(row.target_url);
     });
 });
@@ -106,6 +117,7 @@ app.delete('/:id', (req, res) => {
             if (err) {
                 return res.status(500).send(err.message);
             }
+
             if (!isMatch) {
                 return res.status(403).send('Invalid password\n');
             }
@@ -115,11 +127,22 @@ app.delete('/:id', (req, res) => {
                 if (err) {
                     return res.status(500).send(err.message);
                 }
+
                 res.send('Short URL deleted successfully\n');
             });
         });
     });
 });
+
+function formatUrl(url) {
+    url = url.trim();
+
+    if (!/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+    }
+
+    return url;
+}
 
 // 啟動伺服器
 app.listen(PORT, () => console.log("Server is now running..."));
