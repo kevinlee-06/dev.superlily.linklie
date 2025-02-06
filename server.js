@@ -16,7 +16,14 @@ app.use(express.static(path.join(__dirname)));
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/'));
+    const requestedUrl = req.query.u;
+    if (!requestedUrl) {
+        res.sendFile(path.join(__dirname, '/public/'));
+    }
+    else {
+        res.redirect(requestedUrl);
+    }
+
 });
 
 // 接受 POST 請求的伺服器
